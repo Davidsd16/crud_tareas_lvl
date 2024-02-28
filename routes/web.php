@@ -18,5 +18,5 @@ Route::get('/', function () {
 });
 
 Route::get('/todos', function () {
-    return view('app');
+    return view('todos.index');
 });
