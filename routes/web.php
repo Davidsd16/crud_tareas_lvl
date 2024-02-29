@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\TodosController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -17,6 +18,9 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/todos', function () {
-    return view('todos.index');
-});
+Route::get('/tareas', function () { // Define una ruta GET para '/tareas'
+    return view('todos.index'); // Retorna la vista 'todos.index'
+})->name('todos'); // Asigna el nombre 'todos' a esta ruta
+
+Route::post('/tareas', [TodosController::class, 'store'])->name('todos'); // Define una ruta POST para '/tareas' que apunta al método 'store' del controlador 'TodosController' y le asigna el nombre 'todos'
+
