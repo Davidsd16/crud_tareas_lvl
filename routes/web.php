@@ -18,9 +18,13 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/tareas', function () { // Define una ruta GET para '/tareas'
-    return view('todos.index'); // Retorna la vista 'todos.index'
-})->name('todos'); // Asigna el nombre 'todos' a esta ruta
+ // Define una ruta POST para '/tareas' que apunta al método 'index' del controlador 'TodosController' y le asigna el nombre 'todos'
+Route::get('/tareas', [TodosController::class, 'index'])->name('todos');
 
-Route::post('/tareas', [TodosController::class, 'store'])->name('todos'); // Define una ruta POST para '/tareas' que apunta al método 'store' del controlador 'TodosController' y le asigna el nombre 'todos'
+ // Define una ruta POST para '/tareas' que apunta al método 'store' del controlador 'TodosController' y le asigna el nombre 'todos'
+Route::post('/tareas', [TodosController::class, 'store'])->name('todos');
+
+Route::patch('/tareas', [TodosController::class, 'store'])->name('todos->edit');
+
+Route::delete('/tareas', [TodosController::class, 'store'])->name('todos->destroy');
 

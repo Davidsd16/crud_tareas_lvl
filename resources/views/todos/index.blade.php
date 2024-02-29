@@ -27,6 +27,23 @@
 
         <button type="submit" class="btn btn-primary">Crear una nueva tarea</button> <!-- Botón para enviar el formulario -->
     </form>
+    <div>
+        @foreach ($todos as $todo)
+        <div class="row py-1">
+            <div class="col-md-9 d-flex aling-items-center">
+                <a href="{{ route('todos-edit', ['id' => $todo->id]) }}">{{ $todo->title}}</a> <!-- Enlace para editar la tarea -->
+            </div>
+    
+            <div class="col-md-3 d-flex justin-content-end">
+                <form action="{{ route('todos-destroy', [$todos->id])}}" method="POST"> <!-- Formulario para eliminar la tarea -->
+                    @method('DELETE') <!-- Método HTTP DELETE -->
+                    @csrf <!-- Token CSRF -->
+                    <button class="btn btm-dabger btn-sm">Eliminar</button> <!-- Botón para eliminar la tarea -->
+                </form>
+            </div>
+        </div>
+    @endforeach
+    </div>
 </div>
 
 @endsection <!-- Fin de la sección 'content' -->
