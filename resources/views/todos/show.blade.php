@@ -3,7 +3,7 @@
 @section('content') <!-- Define una sección llamada 'content' que se insertará en el layout 'app' -->
 
 <div class="container w-25 border p-4 mt-4"> <!-- Contenedor con clases de Bootstrap -->
-    <form action="{{ route('todos-edit', ['id' => $todo->id]) }}" method="GET"> <!-- Formulario que enviará los datos a la ruta 'todos-edit' mediante el método GET -->
+    <form action="{{ route('todos-update', ['id' => $todo->id]) }}" method="POST"> <!-- Formulario que enviará los datos a la ruta 'todos-update' mediante el método POST -->
         @method('PATCH')
         @csrf <!-- Directiva de Blade para incluir el token CSRF -->
 

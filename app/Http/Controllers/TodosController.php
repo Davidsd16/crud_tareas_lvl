@@ -37,11 +37,10 @@ class TodosController extends Controller
     
     public function update(Request $request, $id){
         $todo = Todo::find($id); // Busca la tarea a actualizar utilizando su ID
-        $todo->title = $request('title'); // Actualiza el título de la tarea con el valor proporcionado en la solicitud
+        $todo->title = $request->input('title'); // Utiliza la sintaxis de flecha para acceder al valor del campo 'title' en la solicitud
         $todo->save(); // Guarda los cambios en la base de datos
         return redirect()->route('todos')->with('success', 'tarea actualizada!'); // Redirige a la lista de tareas con un mensaje de éxito
     }
     
-
 }
 
