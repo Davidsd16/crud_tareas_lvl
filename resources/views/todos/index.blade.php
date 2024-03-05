@@ -17,9 +17,6 @@
             <h6 class="alert alert-danger">{{ $message }}</h6> <!-- Muestra el mensaje de error asociado al campo 'title' -->
         
         @enderror <!-- Fin de la verificación de errores en el campo 'title' -->
-    
-    
-
         <div class="mb-3">
             <label for="title" class="form-label">Título de la tarea</label> <!-- Etiqueta para el campo de entrada de texto -->
             <input type="text" name="title" class="form-control" > <!-- Campo de entrada de texto para el título de la tarea -->
@@ -35,14 +32,14 @@
             </div>
     
             <div class="col-md-3 d-flex justin-content-end">
-                <form action="{{ route('todos-destroy', [$todos->id])}}" method="POST"> <!-- Formulario para eliminar la tarea -->
+                <form action="{{ route('todos-destroy', ['id' => $todo->id]) }}" method="POST">
                     @method('DELETE') <!-- Método HTTP DELETE -->
                     @csrf <!-- Token CSRF -->
-                    <button class="btn btm-dabger btn-sm">Eliminar</button> <!-- Botón para eliminar la tarea -->
-                </form>
+                    <button class="btn btn-danger btn-sm">Eliminar</button> <!-- Botón para eliminar la tarea -->
+                </form>                
             </div>
         </div>
-    @endforeach
+        @endforeach
     </div>
 </div>
 

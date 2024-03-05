@@ -24,7 +24,7 @@ Route::get('/tareas', [TodosController::class, 'index'])->name('todos');
  // Define una ruta POST para '/tareas' que apunta al método 'store' del controlador 'TodosController' y le asigna el nombre 'todos'
 Route::post('/tareas', [TodosController::class, 'store'])->name('todos');
 
-Route::patch('/tareas', [TodosController::class, 'store'])->name('todos->edit');
+Route::patch('/tareas', [TodosController::class, 'store'])->name('todos-edit');
 
-Route::delete('/tareas', [TodosController::class, 'store'])->name('todos->destroy');
+Route::delete('/tareas', [TodosController::class, 'store'])->name('todos-destroy');
 

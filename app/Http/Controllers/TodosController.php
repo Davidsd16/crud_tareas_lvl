@@ -24,8 +24,9 @@ class TodosController extends Controller
         return redirect()->route('todos')->with('success', 'Tarea creada correctamente');
     }
 
+    // Método para mostrar todas las tareas en la vista 'todos.index'
     public function index(){
         $todos = Todo::all(); // Obtiene todas las tareas de la base de datos
         return view('todos.index', ['todos' => $todos]); // Retorna la vista 'todos.index' con todas las tareas
-    } // Método para mostrar todas las tareas en la vista 'todos.index'
+    } 
 }
