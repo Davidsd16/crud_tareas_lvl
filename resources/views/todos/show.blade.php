@@ -4,6 +4,7 @@
 
 <div class="container w-25 border p-4 mt-4"> <!-- Contenedor con clases de Bootstrap -->
     <form action="{{ route('todos-edit', ['id' => $todo->id]) }}" method="GET"> <!-- Formulario que enviará los datos a la ruta 'todos-edit' mediante el método GET -->
+        @method('PATCH')
         @csrf <!-- Directiva de Blade para incluir el token CSRF -->
 
         @if (session('success')) <!-- Verifica si hay un mensaje de éxito en la sesión -->
