@@ -29,4 +29,11 @@ class TodosController extends Controller
         $todos = Todo::all(); // Obtiene todas las tareas de la base de datos
         return view('todos.index', ['todos' => $todos]); // Retorna la vista 'todos.index' con todas las tareas
     } 
+
+    public function show($id){
+        $todo = Todo::find($id); // Obtiene la tarea correspondiente al ID proporcionado
+        return view('todos.show', ['todo' => $todo]); // Retorna la vista 'todos.show' pasando la tarea como parámetro
+    }
+    
 }
+
