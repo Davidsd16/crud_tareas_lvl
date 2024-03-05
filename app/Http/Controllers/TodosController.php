@@ -42,5 +42,12 @@ class TodosController extends Controller
         return redirect()->route('todos')->with('success', 'tarea actualizada!'); // Redirige a la lista de tareas con un mensaje de éxito
     }
     
+    // Método para eliminar una tarea específica por su ID
+    public function destroy($id){
+        $todo = Todo::find($id); // Busca la tarea utilizando su ID
+        $todo->delete(); // Elimina la tarea de la base de datos
+        return redirect()->route('todos')->with('success', 'La tarea ha sido eliminada!'); // Redirige a la lista de tareas con un mensaje de éxito
+    }
+
 }
 

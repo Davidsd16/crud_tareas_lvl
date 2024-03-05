@@ -20,13 +20,16 @@ Route::get('/', function () {
 
  // Define una ruta POST para '/tareas' que apunta al método 'index' del controlador 'TodosController' y le asigna el nombre 'todos'
 Route::get('/tareas', [TodosController::class, 'index'])->name('todos');
+
  // Define una ruta POST para '/tareas' que apunta al método 'store' del controlador 'TodosController' y le asigna el nombre 'todos'
 Route::post('/tareas', [TodosController::class, 'store'])->name('todos');
 
-
+// Define una ruta para mostrar una tarea específica en el controlador 'TodosController' utilizando el método 'show'
 Route::get('/tareas/{id}', [TodosController::class, 'show'])->name('todos-edit');
 
+// Define una ruta para actualizar una tarea específica en el controlador 'TodosController' utilizando el método 'update'
 Route::patch('/tareas/{id}', [TodosController::class, 'update'])->name('todos-update');
 
-Route::delete('/tareas', [TodosController::class, 'store'])->name('todos-destroy');
+// Define una ruta para eliminar una tarea específica en el controlador 'TodosController' utilizando el método 'destroy'
+Route::delete('/tareas/{id}', [TodosController::class, 'destroy'])->name('todos-destroy');
 
