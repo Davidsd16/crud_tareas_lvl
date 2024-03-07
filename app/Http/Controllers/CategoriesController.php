@@ -5,7 +5,6 @@ namespace App\Http\Controllers;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Category;
-use Illuminate\Validation\Rules\Unique;
 
 class CategoriesController extends Controller
 {
@@ -15,11 +14,6 @@ class CategoriesController extends Controller
     {
         $categories = Category::all(); // Obtiene todas las categorías de la base de datos
         return view('categories.index', ['categories' => $categories]); // Retorna la vista 'categories.index' con todas las categorías
-    }
-
-    public function create()
-    {
-        //
     }
 
     // Método para almacenar una nueva categoría en la base de datos
@@ -68,4 +62,5 @@ class CategoriesController extends Controller
         // Redirige a la ruta 'categories.index' con un mensaje de éxito
         return redirect()->route('categories.index')->with('success', 'Categoría eliminada');
     }
+    
 }
