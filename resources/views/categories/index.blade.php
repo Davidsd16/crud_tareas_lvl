@@ -25,6 +25,21 @@
         
                 <button type="submit" class="btn btn-primary">Crear nueva categoria</button> <!-- Botón para enviar el formulario -->
             </form>
-        </div>
+
+            <div> 
+                @foreach ($categories as $category) <!-- Itera sobre cada categoría en la variable $categories -->
+                    <div class="row py-1"> <!-- Inicia una fila con un pequeño espacio vertical -->
+                        <div class="cold-md-9 d-flex align-items-center"> <!-- Inicia una columna para mostrar el nombre de la categoría -->
+                            <a class="d-flex align-items-center gap-2" href="{{ route('categories.show', ['category' => $category->id])}}"> <!-- Enlace para mostrar los detalles de la categoría -->
+                                <span class="color-container" style="background-color: {{ $category->color}} "></span> {{ $category->name }} <!-- Muestra el color y el nombre de la categoría -->
+                            </a>
+                        </div>
+                    </div>
+                    
+                    <div class="col-md-3 d-flex justify-content-end"> <!-- Inicia una columna para mostrar el botón de eliminar -->
+                        <button class="btn btn-danger btn-sm" data-bs-toggle="#modal{{ $category->id}}">Eliminar</button> <!-- Botón para eliminar la categoría -->
+                    </div>
+                @endforeach
+            </div>         
     </div>
 @endsection <!-- Fin de la sección 'content' -->
