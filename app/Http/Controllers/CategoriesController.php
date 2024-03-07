@@ -42,9 +42,9 @@ class CategoriesController extends Controller
     }
 
     // Método para actualizar una categoría existente
-    public function update(Request $request, string $id)
+    public function update(Request $request, string $category)
     {
-        $category = Category::find($id); // Busca la categoría a actualizar utilizando su ID
+        $category = Category::find($category); // Busca la categoría a actualizar utilizando su ID
         $category->name = $request->name; // Actualiza el nombre de la categoría con el valor proporcionado en la solicitud
         $category->color = $request->color; // Actualiza el color de la categoría con el valor proporcionado en la solicitud
         $category->save(); // Guarda los cambios en la base de datos
@@ -54,9 +54,9 @@ class CategoriesController extends Controller
     }
 
     // Método para eliminar una categoría existente
-    public function destroy(string $id)
+    public function destroy(string $category)
     {
-        $category = Category::find($id); // Busca la categoría a eliminar utilizando su ID
+        $category = Category::find($category); // Busca la categoría a eliminar utilizando su ID
         $category->delete(); // Elimina la categoría de la base de datos
 
         // Redirige a la ruta 'categories.index' con un mensaje de éxito
