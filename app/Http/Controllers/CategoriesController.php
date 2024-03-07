@@ -31,7 +31,7 @@ class CategoriesController extends Controller
         $category->save(); // Guarda la nueva categoría en la base de datos
 
         // Redirige a la ruta 'categories.index' con un mensaje de éxito
-        return redirect()->route('categories.index')->with('success', 'Nueva categoría agregada');
+        return redirect()->route('categories.index')->with('success', 'Nueva categoria agregada');
     }
 
     // Método para mostrar los detalles de una categoría específica
@@ -50,7 +50,7 @@ class CategoriesController extends Controller
         $category->save(); // Guarda los cambios en la base de datos
 
         // Redirige a la ruta 'categories.index' con un mensaje de éxito
-        return redirect()->route('categories.index')->with('success', 'Categoría actualizada');
+        return redirect()->route('categories.index')->with('success', 'Categoria actualizada');
     }
 
     // Método para eliminar una categoría existente
@@ -60,7 +60,7 @@ class CategoriesController extends Controller
         $category->delete(); // Elimina la categoría de la base de datos
 
         // Redirige a la ruta 'categories.index' con un mensaje de éxito
-        return redirect()->route('categories.index')->with('success', 'Categoría eliminada');
+        return redirect()->route('categories.index')->with('success', 'Categoria eliminada');
     }
-    
+
 }
