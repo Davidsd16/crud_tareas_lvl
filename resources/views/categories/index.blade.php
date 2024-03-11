@@ -3,36 +3,31 @@
 @section('content') <!-- Define una sección llamada 'content' que se insertará en el layout 'app' -->
     <div class="container w-25 border p-4 my"> <!-- Contenedor con clases de Bootstrap -->
         <div class="row mx-auto"> <!-- Fila con clases de Bootstrap para centrar el contenido horizontalmente -->
-            <form action="{{ route('categories.store') }}" method="POST"> <!-- Formulario que enviará los datos a la ruta 'categories.store' mediante el método POST -->
-                @csrf <!-- Directiva de Blade para incluir el token CSRF -->
+            <form  method="POST" action="{{route('categories.store')}}">
+                @csrf
         
-                @if (session('success')) <!-- Verifica si hay un mensaje de éxito en la sesión -->
-                    <h6 class="alert alert-success">{{ session('success') }}</h6> <!-- Muestra un mensaje de éxito utilizando la clase de alerta de Bootstrap -->
-                @endif <!-- Fin de la verificación de éxito -->
-                
-                @error('name') <!-- Verifica si hay errores en el campo 'name' -->
-                    <h6 class="alert alert-danger">{{ $message }}</h6> <!-- Muestra el mensaje de error asociado al campo 'name' -->
-                @enderror <!-- Fin de la verificación de errores en el campo 'name' -->
-                
-                <div class="mb-3">
-                    <label for="name" class="form-label">Nombre de la categoría</label> <!-- Etiqueta para el campo de entrada de texto para el nombre de la categoría -->
-                    <input type="text" name="name" class="form-control" > <!-- Campo de entrada de texto para el nombre de la categoría -->
+                <div class="mb-3 col">
+        
+                @error('name')
+                    <div class="alert alert-danger">{{ $message }}</div>
+                @enderror
+        
+                @error('color')
+                    <div class="alert alert-danger">{{ $message }}</div>
+                @enderror
+        
+                @if (session('success'))
+                        <h6 class="alert alert-success">{{ session('success') }}</h6>
+                @endif
+        
+                    <label for="exampleFormControlInput1" class="form-label">Nombre de la categoría</label>
+                    <input type="text" class="form-control mb-2" name="name" id="exampleFormControlInput1" placeholder="Hogar">
+                    
+                    <label for="exampleColorInput" class="form-label">Escoge un color para la categoría</label>
+                    <input type="color" class="form-control form-control-color" name="color" id="exampleColorInput" value="#563d7c" title="Choose your color">
+        
+                    <input type="submit" value="Crear nueva categoria" class="btn btn-primary my-2" />
                 </div>
-                <div class="mb-3">
-                    <label for="color" class="form-label">Color de la categoría</label> <!-- Etiqueta para el campo de selección de color -->
-                    <input type="color" name="color" class="form-control" > <!-- Campo de selección de color -->
-                </div>
-
-                <!-- Etiqueta y lista desplegable para seleccionar la categoría de la tarea -->
-                <label for="category_id" class="form-label">Categoría de la tarea</label>
-                <select name="category_id" class="form-select">
-                    <!-- Itera sobre todas las categorías disponibles -->
-                    @foreach ($categories as $category)
-                        <!-- Genera una opción para cada categoría -->
-                        <option value="{{$category->id}}">{{$category->name}}</option>
-                    @endforeach
-                </select>
-                <button type="submit" class="btn btn-primary">Crear nueva categoría</button> <!-- Botón para enviar el formulario -->
             </form>
 
             <div> 
