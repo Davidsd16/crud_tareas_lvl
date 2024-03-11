@@ -56,11 +56,17 @@ class CategoriesController extends Controller
     // Método para eliminar una categoría existente
     public function destroy(string $category)
     {
-        $category = Category::find($category); // Busca la categoría a eliminar utilizando su ID
-        $category->delete(); // Elimina la categoría de la base de datos
-
+        // Busca la categoría a eliminar utilizando su ID
+        $category = Category::find($category);
+        // Itera sobre cada tarea asociada a la categoría y las elimina una por una
+        $category->todos()->each(function ($todo){
+            $todo->delete();
+        });
+        // Elimina la categoría de la base de datos
+        $category->delete();
         // Redirige a la ruta 'categories.index' con un mensaje de éxito
         return redirect()->route('categories.index')->with('success', 'Categoria eliminada');
     }
+
 
 }

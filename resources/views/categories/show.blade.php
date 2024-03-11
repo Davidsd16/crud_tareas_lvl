@@ -56,7 +56,7 @@
                         <form action="{{ route('todos-destroy', [$todo->id]) }}" method="POST">
                             @method('DELETE') <!-- Método HTTP para la eliminación de la tarea -->
                             @csrf <!-- Token CSRF para protección del formulario -->
-                            <button class="btn btn-danger btn-sm">Eliminar</button>
+                            <button type="submit" class="btn btn-danger btn-sm">Eliminar</button>
                         </form>
                     </div>
                 </div>

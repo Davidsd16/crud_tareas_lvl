@@ -11,10 +11,15 @@ class Todo extends Model
 
     /**
      * Define la relación "belongsTo" con la categoría.
-     *
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
-    public function categoría() {
+
+    protected $fillable = ['title', 'category_id'];
+
+    public function category()
+    {
         return $this->belongsTo(Category::class);
     }
 }
+
+

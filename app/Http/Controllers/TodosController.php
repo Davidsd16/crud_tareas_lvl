@@ -9,7 +9,6 @@ use App\Models\Category;
 
 class TodosController extends Controller
 {
-
     // Método para almacenar una nueva tarea
     public function store(Request $request){
         // Validar los datos de entrada
@@ -23,10 +22,7 @@ class TodosController extends Controller
         // Asignar el título de la tarea desde la solicitud
         $todo->title = $request->title;
         // Asignar la categoría de la tarea si se proporciona
-        if ($request->has('category_id')) {
-            $todo->category_id = $request->category_id;
-        }
-        // Guardar la nueva tarea en la base de datos
+        $todo->category_id = $request->category_id ?? 1;
         $todo->save();
         // Redirigir a la ruta 'todos' y mostrar un mensaje de éxito
         return redirect()->route('todos')->with('success', 'Tarea creada correctamente');
@@ -36,10 +32,8 @@ class TodosController extends Controller
     public function index(){
         // Cargar las tareas con la relación de categoría
         $todos = Todo::with('category')->get();
-    
         // Obtener todas las categorías de la base de datos
         $categories = Category::all();
-    
         // Retorna la vista 'todos.index' con todas las tareas y categorías
         return view('todos.index', ['todos' => $todos, 'categories' => $categories]);
     }
