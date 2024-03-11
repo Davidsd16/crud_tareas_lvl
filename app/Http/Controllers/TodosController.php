@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Todo;
+use App\Models\Category;
 
 class TodosController extends Controller
 {
@@ -18,6 +19,7 @@ class TodosController extends Controller
         $todo = new Todo;
         // Asignar el título de la tarea desde la solicitud
         $todo->title = $request->title;
+        $todo->category_id = $request->category_id; // ?? null;
         // Guardar la nueva tarea en la base de datos
         $todo->save();
         // Redirigir a la ruta 'todos' y mostrar un mensaje de éxito
@@ -27,7 +29,8 @@ class TodosController extends Controller
     // Método para mostrar todas las tareas en la vista 'todos.index'
     public function index(){
         $todos = Todo::all(); // Obtiene todas las tareas de la base de datos
-        return view('todos.index', ['todos' => $todos]); // Retorna la vista 'todos.index' con todas las tareas
+        $categories = Category::all(); // Obtiene todas las categorias de la base de datos
+        return view('todos.index', ['todos' => $todos, 'categories' => $categories]); // Retorna la vista 'todos.index' con todas las tareas
     } 
 
     public function show($id){

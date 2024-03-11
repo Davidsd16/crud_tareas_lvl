@@ -3,7 +3,7 @@
 @section('content') <!-- Define una sección llamada 'content' que se insertará en el layout 'app' -->
     <div class="container w-25 border p-4 my"> <!-- Contenedor con clases de Bootstrap -->
         <div class="row mx-auto"> <!-- Fila con clases de Bootstrap para centrar el contenido horizontalmente -->
-            <form action="{{ route('categories.store') }}" method="POST"> <!-- Formulario que enviará los datos a la ruta 'categories.store' mediante el método POST -->
+            <form action="{{ route('categories.store', ['category' => $category->id]) }}" method="POST"> <!-- Formulario que enviará los datos a la ruta 'categories.store' mediante el método POST -->
                 @csrf <!-- Directiva de Blade para incluir el token CSRF -->
         
                 @if (session('success')) <!-- Verifica si hay un mensaje de éxito en la sesión -->
@@ -22,7 +22,16 @@
                     <label for="color" class="form-label">Color de la categoria</label> <!-- Etiqueta para el campo de selección de color -->
                     <input type="color" name="color" class="form-control" > <!-- Campo de selección de color -->
                 </div>
-        
+
+                <!-- Etiqueta y lista desplegable para seleccionar la categoría de la tarea -->
+                <label for="category_id" class="form-label">Categoria de la tarea</label>
+                <select name="category_id" class="form-select">
+                    <!-- Itera sobre todas las categorías disponibles -->
+                    @foreach ($categories as $category)
+                        <!-- Genera una opción para cada categoría -->
+                        <option value="{{$category->id}}">{{$category->name}}</option>
+                    @endforeach
+                </select>
                 <button type="submit" class="btn btn-primary">Crear nueva categoria</button> <!-- Botón para enviar el formulario -->
             </form>
 
