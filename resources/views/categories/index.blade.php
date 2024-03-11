@@ -3,7 +3,7 @@
 @section('content') <!-- Define una sección llamada 'content' que se insertará en el layout 'app' -->
     <div class="container w-25 border p-4 my"> <!-- Contenedor con clases de Bootstrap -->
         <div class="row mx-auto"> <!-- Fila con clases de Bootstrap para centrar el contenido horizontalmente -->
-            <form action="{{ route('categories.store', ['category' => $category->id]) }}" method="POST"> <!-- Formulario que enviará los datos a la ruta 'categories.store' mediante el método POST -->
+            <form action="{{ route('categories.store') }}" method="POST"> <!-- Formulario que enviará los datos a la ruta 'categories.store' mediante el método POST -->
                 @csrf <!-- Directiva de Blade para incluir el token CSRF -->
         
                 @if (session('success')) <!-- Verifica si hay un mensaje de éxito en la sesión -->
@@ -15,16 +15,16 @@
                 @enderror <!-- Fin de la verificación de errores en el campo 'name' -->
                 
                 <div class="mb-3">
-                    <label for="name" class="form-label">Nombre de la categoria</label> <!-- Etiqueta para el campo de entrada de texto para el nombre de la categoría -->
+                    <label for="name" class="form-label">Nombre de la categoría</label> <!-- Etiqueta para el campo de entrada de texto para el nombre de la categoría -->
                     <input type="text" name="name" class="form-control" > <!-- Campo de entrada de texto para el nombre de la categoría -->
                 </div>
                 <div class="mb-3">
-                    <label for="color" class="form-label">Color de la categoria</label> <!-- Etiqueta para el campo de selección de color -->
+                    <label for="color" class="form-label">Color de la categoría</label> <!-- Etiqueta para el campo de selección de color -->
                     <input type="color" name="color" class="form-control" > <!-- Campo de selección de color -->
                 </div>
 
                 <!-- Etiqueta y lista desplegable para seleccionar la categoría de la tarea -->
-                <label for="category_id" class="form-label">Categoria de la tarea</label>
+                <label for="category_id" class="form-label">Categoría de la tarea</label>
                 <select name="category_id" class="form-select">
                     <!-- Itera sobre todas las categorías disponibles -->
                     @foreach ($categories as $category)
@@ -32,13 +32,13 @@
                         <option value="{{$category->id}}">{{$category->name}}</option>
                     @endforeach
                 </select>
-                <button type="submit" class="btn btn-primary">Crear nueva categoria</button> <!-- Botón para enviar el formulario -->
+                <button type="submit" class="btn btn-primary">Crear nueva categoría</button> <!-- Botón para enviar el formulario -->
             </form>
 
             <div> 
                 @foreach ($categories as $category)
                     <div class="row py-1">
-                        <div class="cold-md-9 d-flex align-items-center">
+                        <div class="col-md-9 d-flex align-items-center">
                             <a class="d-flex align-items-center gap-2" href="{{ route('categories.show', ['category' => $category->id])}}">
                                 <span class="color-container" style="background-color: {{ $category->color}} "></span> {{ $category->name }}
                             </a>
@@ -58,8 +58,8 @@
                                 </div>
                                 <div class="modal-body">
                                     <!-- Contenido del modal -->
-                                    Al eliminar la categoria <strong>{{ $category->name}}</strong> se eliminaran todas las tareas asignadas
-                                    ¿Estas seguro que desea eliminar la categoria <strong>{{ $category->name }}</strong>
+                                    Al eliminar la categoría <strong>{{ $category->name}}</strong> se eliminarán todas las tareas asignadas.
+                                    ¿Estás seguro que deseas eliminar la categoría <strong>{{ $category->name }}</strong>?
                                 </div>
                                 <div class="modal-footer">
                                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
@@ -74,5 +74,6 @@
                     </div>
                 @endforeach
             </div>         
+        </div>
     </div>
 @endsection <!-- Fin de la sección 'content' -->
