@@ -22,6 +22,17 @@
             <input type="text" name="title" class="form-control" > <!-- Campo de entrada de texto para el título de la tarea -->
         </div>
 
+        <!-- Etiqueta para el campo de selección de categoría -->
+        <label for="category_id" class="form-label">Categoria de la tarea</label>
+        <!-- Campo de selección de categoría -->
+        <select name="category_id" class="form-select">
+            <!-- Bucle para iterar sobre las categorías y generar las opciones -->
+            @foreach ($categories as $category )
+                <!-- Opción para cada categoría -->
+                <option value="{{ $category->id }}">{{ $category->name }}</option>
+            @endforeach
+        </select>
+
         <button type="submit" class="btn btn-primary">Crear una nueva tarea</button> <!-- Botón para enviar el formulario -->
     </form>
     <div>
@@ -30,7 +41,7 @@
             <div class="col-md-9 d-flex aling-items-center">
                 <a href="{{ route('todos-edit', ['id' => $todo->id]) }}">{{ $todo->title}}</a> <!-- Enlace para editar la tarea -->
             </div>
-    
+            
             <div class="col-md-3 d-flex justin-content-end">
                 <form action="{{ route('todos-destroy', ['id' => $todo->id]) }}" method="POST">
                     @method('DELETE') <!-- Método HTTP DELETE -->
