@@ -33,7 +33,8 @@
             @endforeach
         </select>
 
-        <button type="submit" class="btn btn-primary">Crear una nueva tarea</button> <!-- Botón para enviar el formulario -->
+        <button type="submit" class="btn btn-primary" style="margin-top: 10px; margin-bottom: 10px;">Crear una nueva tarea</button>
+        
     </form>
     <div>
         @foreach ($todos as $todo)
