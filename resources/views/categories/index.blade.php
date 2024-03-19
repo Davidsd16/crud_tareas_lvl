@@ -21,9 +21,9 @@
                 @endif
         
                     <label for="exampleFormControlInput1" class="form-label">Nombre de la categoría</label>
-                    <input type="text" class="form-control mb-2" name="name" id="exampleFormControlInput1" placeholder="Hogar">
+                    <input type="text" class="form-control mb-2" name="name" id="exampleFormControlInput1" placeholder="">
                     
-                    <label for="exampleColorInput" class="form-label">Escoge un color para la categoría</label>
+                    <label for="exampleColorInput" class="form-label">Color de la categoria</label>
                     <input type="color" class="form-control form-control-color" name="color" id="exampleColorInput" value="#563d7c" title="Choose your color">
         
                     <input type="submit" value="Crear nueva categoria" class="btn btn-primary my-2" />
